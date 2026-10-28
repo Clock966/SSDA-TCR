@@ -1,0 +1,25 @@
+save_path: ./vox1_epoch_100/1_cos_MSE_triplet_0001
+#train_list_vox2: /home/ll/Documents/zjh/sv-adapt/1-Pre_training/make_cnc_data/train.scp
+train_list_vox2: ./select_train.scp
+musan_path: /home/ll/Documents/zjh/data/musan
+rir_path: /home/ll/Documents/zjh/data/RIRS_NOISES/simulated_rirs
+#eval_list: /home/ll/Documents/zjh/sv-adapt/1-Pre_training/make_cnc_data/test.trail
+eval_list: ./test.trail
+num_frames: 200 # Duration of the input segments, eg: 200 for 2 seconds
+batch_size_1: 8 # Batch size for labeled Vox2
+batch_size_2: 8 # Batch size for unlabeled CN1
+n_thread: 8 # Number of loader threads
+n_class: 40 # Number of speakers for Vox2
+C: 1024 # Channel size for the speaker network
+m: 0.2 # Loss margin in AAM softmax
+s: 30 # Loss scale in AAM softmax
+init_w: 10.0 # Initial w in AP loss
+init_b: -5.0 # Initial b in AP loss
+lr: 0.001 # Learning rate+
+step_size: 1 # scheduler step size
+weight_decay: 2e-5 # Weight decay
+test_step: 1 # Test and save every [test_step] epochs
+lr_decay: 0.97 # Learning rate decay every [test_step] epochsls
+n_epoch: 100 # Number of total epochs
+loss_weight : 1.0 # sum weight of the joint loss
+eer_threshod: 15.0 # EER threshold for saving model
